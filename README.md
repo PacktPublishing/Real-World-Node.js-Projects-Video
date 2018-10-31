@@ -1,5 +1,5 @@
 # Real World Node.js Projects [Video]
-This is the code repository for [Real World Node.js Projects](https://www.packtpub.com/business/server-side-programming-nodejs-beginners-video?utm_source=github&utm_medium=repository&utm_campaign=9781788476126), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
+This is the code repository for [Real World Node.js Projects](https://www.packtpub.com/web-development/real-world-nodejs-projects-video), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
 ## About the Video Course
 Node.js is a performance-efficient server-side platform which makes writing backend code simple and fun. Since it is written in JavaScript, it is the perfect tool for full-stack development because it allows you to have your entire codebase in one language.
 
