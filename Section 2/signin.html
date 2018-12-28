@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign In</title>
+</head>
+<body>
+
+<p>To advance to the message board, please write your username</p>
+<input id="username" placeholder="username" />
+<button id="submit-user">Submit</button>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+document.getElementById('submit-user').addEventListener('click',() => {
+	console.log('user submitted', document.getElementById('username').value);
+	window.location.href = "/" + document.getElementById('username').value;
+})
+
+</script>
+</body>
+</html>

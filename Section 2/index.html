@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+</head>
+<body>
+
+<p>logged in as: <span id="username"></span></p>
+
+<p>write a message:</p>
+<form id="msg-form">
+	<input type="hidden" name="user" id="user" />
+	<input type="text" name="message" id="message" />
+	<button type="button" id="submit">submit</button> 
+</form>
+
+
+<br/>
+<br/>
+<ul id="chat-area"> 
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  	let username = window.location.pathname.split("/")[1];
+
+
+	document.getElementById("user").value = username;
+	document.getElementById("username").innerText = username;
+
+
+	document.getElementById("submit").addEventListener("click",function(e){
+		socket.emit('chat message', {
+			user: username,
+			message: document.getElementById("message").value
+
+		});
+
+	})
+
+	socket.on('chat message', function(msg){
+		console.log(msg);
+		console.log(typeof msg);
+		document.getElementById("chat-area").innerHTML += `<li>${msg.user} says: ${msg.message}</li>`;
+	})
+
+    // socket.on('chat message', function(msg){
+    // 	console.log('chat message')
+    //   $('#messages').append($('<li>').text(msg));
+    // });
+
+
+</script>
+</body>
+</html>
