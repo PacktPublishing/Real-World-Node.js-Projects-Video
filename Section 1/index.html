@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Vote on a topic:</h1>
+    <form id="pollform" action="/vote/new" method="POST">
+      <label for="linux">linux</label>
+      <input class="checkbox" type="checkbox" id="linux" name="linux" onclick="vote(this)"/>
+      <label for="macos">macos</label>
+      <input class="checkbox" type="checkbox" id="macos" value="macos" name="macos" onclick="vote(this)"/>
+      <label for="windows">windows</label>
+      <input class="checkbox" type="checkbox" id="windows" value="windows" name="windows" onclick="vote(this)"/>
+      <input type="submit" />
+    </form>
+    <br />
+    <hr />
+    <div id="pollresults">
+        <h1> Poll Results:</h1>
+        <p> LINUX: <span id="linuxvotes"></span> votes </p>
+        <p> MACOS: <span id="macosvotes"></span> votes </p>
+        <p> WINDOWS: <span id="windowsvotes"></span> votes </p>
+    </div>
+    <script type="text/javascript">
+    const pollform = document.getElementById('pollform');
+    const checkboxes = document.getElementsByClassName('checkbox');
+
+    const vote = (element) =>{
+        for(let i = 0; i <= checkboxes.length - 1; i++){
+            if(checkboxes[i].id !== element.id){
+                checkboxes[i].checked = false;
+            }
+        }
+    }
+    window.onload = () => {
+        fetch('/poll').then((results) => {
+            results.json().then((data) => {
+                for(x in data){
+                    document.getElementById(x + 'votes').innerText = data[x];
+                }
+            })
+        })
+    }
+      
+    </script>
+</body>
+</html>
